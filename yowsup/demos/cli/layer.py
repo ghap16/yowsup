@@ -515,6 +515,14 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
         self.output(output, tag = None, prompt = not self.sendReceipts)
         if self.sendReceipts:
             self.toLower(message.ack(self.sendRead))
+            import requests                                                                                
+            url = 'http://ghastly-lovebird-1922.vagrantshare.com/interacciudana/whatsapp/api/message'      
+            data = {
+                'de':sender,
+                'contenido':messageOut,
+                'tipo':'TEXTO'
+            }
+            r = requests.post(url, data=data)
             self.output("Sent delivered receipt"+" and Read" if self.sendRead else "", tag = "Message %s" % message.getId())
 
 
