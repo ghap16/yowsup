@@ -523,7 +523,7 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             headers = {'Authorization':'Bearer 53eb096b5ab3b9d2189fa5b11d265459371bb5d9'}
 
             data = {
-                'para':'9995104500'
+                'para':'9995104500',
                 'de':sender,
                 'contenido':messageOut,
                 'tipo':'TEXTO'
