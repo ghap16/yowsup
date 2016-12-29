@@ -528,7 +528,7 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
                 'contenido':messageOut,
                 'tipo':'TEXTO'
             }
-            r = requests.post(url, data=data)
+            r = requests.post(url, data=data, headers=headers)
             
             self.output("Sent delivered receipt"+" and Read" if self.sendRead else "", tag = "Message %s" % message.getId())
 
