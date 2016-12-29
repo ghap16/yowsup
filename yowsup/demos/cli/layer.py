@@ -518,8 +518,9 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             self.toLower(message.ack(self.sendRead))
             
             ##### envio a sira de whatsapp recibidos ####
-            base_url = 'http://ghastly-lovebird-1922.vagrantshare.com'
+            base_url = 'http://hot-jerboa-2434.vagrantshare.com'
             url = base_url+'/interacciudana/whatsapp/api/message/receive'
+            headers = {'Authorization':'Bearer 53eb096b5ab3b9d2189fa5b11d265459371bb5d9'}
 
             data = {
                 'para':'9995104500'
