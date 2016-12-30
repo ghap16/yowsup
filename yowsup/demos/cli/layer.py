@@ -518,17 +518,16 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             self.toLower(message.ack(self.sendRead))
             
             ##### envio a sira de whatsapp recibidos ####
-            base_url = 'http://hot-jerboa-2434.vagrantshare.com'
+            base_url = 'https://sira.mx'
             url = base_url+'/interacciudana/whatsapp/api/message/receive'
-            headers = {'Authorization':'Bearer 53eb096b5ab3b9d2189fa5b11d265459371bb5d9'}
+            # headers = {'Authorization':'Bearer 53eb096b5ab3b9d2189fa5b11d265459371bb5d9'}
 
             data = {
-                'para':'9995104500',
                 'de':sender,
                 'contenido':messageOut,
                 'tipo':'TEXTO'
             }
-            r = requests.post(url, data=data, headers=headers)
+            r = requests.post(url, data=data)
             
             self.output("Sent delivered receipt"+" and Read" if self.sendRead else "", tag = "Message %s" % message.getId())
 
