@@ -494,7 +494,6 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
     @ProtocolEntityCallback("message")
     def onMessage(self, message):
         messageOut = ""
-        print(self.getTextMessageBody(message))
         if message.getType() == "text":
             #self.output(message.getBody(), tag = "%s [%s]"%(message.getFrom(), formattedDate))
             messageOut = self.getTextMessageBody(message)
