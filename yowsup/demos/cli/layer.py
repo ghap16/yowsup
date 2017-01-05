@@ -503,6 +503,10 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             messageOut = "Unknown message type %s " % message.getType()
             print(messageOut.toProtocolTreeNode())
 
+        try:
+            messageOut = messageOut.encode('utf-8')
+        except Exception, e:
+            messageOut = 'Mensaje no valido'
 
         formattedDate = datetime.datetime.fromtimestamp(message.getTimestamp()).strftime('%d-%m-%Y %H:%M')
         sender = message.getFrom() if not message.isGroupMessage() else "%s/%s" % (message.getParticipant(False), message.getFrom())
@@ -518,12 +522,12 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             self.toLower(message.ack(self.sendRead))
             
             if message.getType() == "text":
-                url = 'http://<domain>/interacciudana/whatsapp/api/message/receive'
+                url = 'https://<domain>/interacciudana/whatsapp/api/message/receive'
                 # headers = {'Authorization':'<token>'}
                 data = {
                     'de':sender,
-                    'contenido':messageOut,
-                    'tipo':'TEXTO'
+                    'contenido':messageOut.encode('latin-1').decode() if sys.version_info >= (3, 0) else messageOut,
+                    'tipo':'TEXTo'
                 }
                 try:
                     r = requests.post(url, data=data, headers)
