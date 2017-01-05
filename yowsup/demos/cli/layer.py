@@ -522,17 +522,16 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             self.toLower(message.ack(self.sendRead))
             
             if message.getType() == "text":
-                url = 'https://<toke>/interacciudana/whatsapp/api/message/receive'
-                headers = {'Authorization':'<token>'}
+                url = 'https://<domain>/interacciudana/whatsapp/api/message/receive'
+                #headers = {'Authorization':'<token>'}
                 data = {
                     'de':sender,
                     'contenido':messageOut.encode('latin-1').decode() if sys.version_info >= (3, 0) else messageOut,
                     'tipo':'TEXT'
                 }
                 try:
-                    r = requests.post(url, data=data)
+                    r = requests.post(url, data=data, headers)
                 except Exception, e:
-                    print(e)
                     pass
             
             self.output("Sent delivered receipt"+" and Read" if self.sendRead else "", tag = "Message %s" % message.getId())
