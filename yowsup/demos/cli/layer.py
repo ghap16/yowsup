@@ -523,11 +523,11 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             
             if message.getType() == "text":
                 url = 'https://<domain>/interacciudana/whatsapp/api/message/receive'
-                #headers = {'Authorization':'<token>'}
+                # headers = {'Authorization':'<token>'}
                 data = {
                     'de':sender,
                     'contenido':messageOut.encode('latin-1').decode() if sys.version_info >= (3, 0) else messageOut,
-                    'tipo':'TEXT'
+                    'tipo':'TEXTo'
                 }
                 try:
                     r = requests.post(url, data=data, headers)
